@@ -1,7 +1,7 @@
 '''
 Author: Hu_Yihua_UsadaYu
 
-Date: 2023-12-25
+Update: 2023-12-25
 
 Usage: python file_Base64.py [encode|decode] input_file [output_file]
 

@@ -1,4 +1,4 @@
-# 可执行文件file_Base64.exe使用说明
+# 可执行文件file_Base64使用说明
 
 ### 1. Update:
 
@@ -22,11 +22,11 @@
 
 ​	Environment: Windows Linux
 
-​	Usage: 
+​	Usage Command: 
 
 ​	(1) Windows: cd bin && file_Base64.exe [encode|decode] input_file [output_file]
 
-​	(2) Linux: ./pack.sh && cd bin && ./file_Base64 [encode|decode] input_file [output_file]
+​	(2) Linux: cd bin && ./file_Base64 [encode|decode] input_file [output_file]
 
 
 
@@ -41,6 +41,8 @@
 ​		将文本文件input_file通过Base64解码为原来的文件
 
 ​	(3) output_file是可选参数，可自行指定输出文件或不指定，若不指定程序会为你自动创建一个新的文件
+
+​	(4) 源文件基于python3编写，通过pyinstaller打包，upx压缩
 
 
 

@@ -11,8 +11,6 @@ CFLAGS		+= -Wall
 
 CFLAGS		+= -I$(INCLUDE_DIR)
 
-LDFLAGS		+= -pthread
-
 SRC_FILES	:= $(shell find ./ -name "*.c" -exec echo {} +)
 OBJ_FILES	:= $(patsubst ./%.c, ./%.o, $(SRC_FILES))
 
@@ -27,7 +25,7 @@ mkdir:
 	-@mkdir -p $(BINARY_DIR)
 
 $(TARGET): $(OBJ_FILES)
-	$(COMPILER) $(CFLAGS) $(LDFLAGS) -o $(@) -Wl,--start-group $(?) -Wl,--end-group
+	$(COMPILER) $(CFLAGS) -o $(@) -Wl,--start-group $(?) -Wl,--end-group
 	-@mv $(@) $(BINARY_DIR)
 
 $(OBJ_FILES): $(SRC_FILES)

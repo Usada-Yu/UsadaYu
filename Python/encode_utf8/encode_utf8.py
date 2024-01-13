@@ -1,7 +1,9 @@
 '''
 Author: Hu_Yihua_UsadaYu
 
-Update: 2024-01-01
+Creation Date: 2024-01-01
+
+Updated Date: 2024-01-01
 
 Usage:
 python encode_utf8.py directory_path [file_extensions]
@@ -54,7 +56,7 @@ def process_files(directory, extensions=None):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("\nUsage: python3 encode_utf8.py file_path [file_extensions]\n")
+        print("\nUsage: python encode_utf8.py file_path [file_extensions]\n")
         sys.exit(1)
 
     file_path = sys.argv[1]

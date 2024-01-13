@@ -1,7 +1,9 @@
 '''
 Author: Hu_Yihua_UsadaYu
 
-Update: 2023-12-25
+Creation Date: 2023-12-25
+
+Updated Date: 2023-12-25
 
 Usage: python file_Base64.py [encode|decode] input_file [output_file]
 
@@ -16,34 +18,14 @@ Notice:
 (1) 如果是编码(encode)，不指定output_file则会自动创建一个txt格式文件
 ​(2) 如果是解码(decode)，不指定output_file则会自动创建一个txt格式文件，
     但可能需要将解码后的文件后缀修改为原来正确的文件后缀，所以解码时尽量指定output_file参数
+(3) 此脚本不能对目录进行编解码，如有需要，请先对目录进行压缩
 '''
 
 import os
 import sys
 import base64
 
-# 创建一个独一无二的文件名，防止冲突
-def create_unique_file(file_name):
-    if not os.path.exists(file_name):
-        with open(file_name, "w") as _:
-            print(f"File '{file_name}' is created")
-            return file_name
-    else:
-        count = 1
-        new_file_base, new_file_extension = os.path.splitext(file_name)
-        new_file_name = f"{new_file_base}_{count}{new_file_extension}"
-
-        while os.path.exists(new_file_name):
-            count += 1
-            new_file_name = f"{new_file_base}_{count}{new_file_extension}"
-            if count == 100:
-                print("When creating a new file, there are too many conflicting file names")
-                print("Please specify a feasible output file name when running the command")
-                sys.exit(1)
-
-        with open(new_file_name, "w") as _:
-            print(f"File '{new_file_name}' is created")
-            return new_file_name
+import fileModule
 
 '''分割文件名和后缀
 无论文件是否有后缀，后缀是什么，都将新后缀更改为.txt
@@ -56,7 +38,7 @@ def file_and_extension(origin_file_name):
         print(f"If it's decoding, you may need to manually change the file extension")
     
     file_name = origin_file_base + ".txt"
-    return create_unique_file(file_name)
+    return fileModule.FMcreateUniqueFile(file_name)
 
 def encode(input_file, output_file):
     with open(input_file, "rb") as f:
@@ -93,14 +75,16 @@ if __name__ == "__main__":
     if len(sys.argv) == 4:
         output_file = sys.argv[3]
     if len(sys.argv) == 4 and os.path.exists(output_file):
-        output_file = create_unique_file(output_file)
+        output_file = fileModule.FMcreateUniqueFile(output_file)
     if len(sys.argv) == 3:
         output_file = file_and_extension(input_file)
-    
+
+    if not output_file:
+        sys.exit(1)
+
     if action not in ["encode", "decode"]:
         print("Invalid action. Please use 'encode' or 'decode'")
         sys.exit(1)
-
 
     if action == "encode":
         encode(input_file, output_file)

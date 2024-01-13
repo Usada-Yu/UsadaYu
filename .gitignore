@@ -1,3 +1,19 @@
+# private
 .vscode
+
+# common directory
 bin
+build
+dist
+artifact
+# python directory
+__pycache__
+*.egg-info
+
+# common file
 *.o
+*.gcno
+*.gcda
+*.docx
+# python file
+*.spec

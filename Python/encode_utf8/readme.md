@@ -2,11 +2,13 @@
 
 ### 1. Update:
 
+​	Creation Date: 2024-01-01
+
 ###### 	version: 1.0.0
 
-​	Last Updated: 2024-01-01 (Happy New Year)
+​	Updated Date: 2024-01-01
 
-​	Update Details: 初始化程序，添加基础功能
+​	Update Details: 可执行文件可对指定目录中的文件进行编码格式的统一
 
 
 
@@ -61,8 +63,6 @@
 ​		./encode_utf8 directory_path .py .c .cpp
 
 ​		./encode_utf8 file_path1 file_path2
-
-​	(5) 源文件基于python3编写，通过pyinstaller打包，upx压缩
 
 
 

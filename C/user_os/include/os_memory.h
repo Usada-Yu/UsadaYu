@@ -24,11 +24,15 @@
 #ifndef OS_MEMORY_ALLOC
 #define OS_MEMORY_ALLOC(ptr, num)                                   \
     ptr = (typeof(ptr))malloc(sizeof(typeof(*ptr)) * (num));        \
-    if (OS_isNull(ptr)) {                                           \
-        OS_ERROR("Malloc fail\n");                                  \
-        return OS_EMEMORY_ALLOC;                                    \
+    if (OS_isNotNull(ptr)) {                                        \
+        memset(ptr, 0, sizeof(typeof(*ptr)) * (num));               \
     }                                                               \
-    memset(ptr, 0, sizeof(typeof(*ptr)) * (num));
+    else {                                                          \
+        if (0 >= num) {                                             \
+            OS_ERROR("The number of heap memory is %d\n", num);     \
+        }                                                           \
+        OS_ERROR("Malloc fail\n");                                  \
+    }
 #endif  // OS_MEMORY_ALLOC
 
 /********************************************************************************************

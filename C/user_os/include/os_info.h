@@ -94,13 +94,13 @@ void _os_info_current_time(FILE *stream);
 #define OS_isSUC_INFO_RE(ret, func)                                 \
     if (OS_isSuc(ret)) {                                            \
         OS_INFO(                                                    \
-        "The function "#func"() call was successful, return\n");    \
+        "The function ["#func"()] call was successful, return\n");  \
         return ret;                                                 \
     }
 #endif  // OS_isSUCCESS_INFO_RE
 
 /********************************************************************************************
- * @brief   判断函数返回状态，成功后仅打印信息到标准输出，不返回
+ * @brief   判断函数返回状态，成功后打印信息到标准输出，不做其它处理
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -109,13 +109,13 @@ void _os_info_current_time(FILE *stream);
 #define OS_isSUC_INFO_IF(ret, func)                                 \
     if (OS_isSuc(ret)) {                                            \
         OS_INFO(                                                    \
-        "The function "#func"() call was successful, "              \
+        "The function ["#func"()] call was successful, "            \
         "print only\n");                                            \
     }
 #endif  // OS_isSUC_INFO_IF
 
 /********************************************************************************************
- * @brief   判断函数返回状态，成功后仅打印信息到标准输出，并二次循环
+ * @brief   判断函数返回状态，成功后打印信息到标准输出，并二次循环
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -126,13 +126,14 @@ void _os_info_current_time(FILE *stream);
 #define OS_isSUC_INFO_CT(ret, func)                                 \
     if (OS_isSuc(ret)) {                                            \
         OS_INFO(                                                    \
-        "The function "#func"() call was successful, continue\n");  \
+        "The function ["#func"()] call was successful, "            \
+        "continue\n");                                              \
         continue;                                                   \
     }
 #endif  // OS_isSUC_INFO_CT
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印错误信息到标准错误，并返回
+ * @brief   判断函数返回状态，失败后打印错误信息到标准错误，并返回
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -141,14 +142,14 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_ERROR_RE(ret, func)                               \
     if (OS_isFail(ret)) {                                           \
         OS_ERROR(                                                   \
-        "The function "#func"() call failed with [%d], return\n",   \
+        "The function ["#func"()] call failed with [%d], return\n", \
         ret);                                                       \
         return ret;                                                 \
     }
 #endif  // OS_isFAIL_ERROR_RE
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印错误信息到标准错误，不返回
+ * @brief   判断函数返回状态，失败后打印错误信息到标准错误，不做其它处理
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -157,14 +158,14 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_ERROR_IF(ret, func)                               \
     if (OS_isFail(ret)) {                                           \
         OS_ERROR(                                                   \
-        "The function "#func"() call failed with [%d], "            \
+        "The function ["#func"()] call failed with [%d], "          \
         "print only\n",                                             \
         ret);                                                       \
     }
 #endif  // OS_isFAIL_ERROR_IF
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印错误信息到标准错误，并跳转
+ * @brief   判断函数返回状态，失败后打印错误信息到标准错误，并跳转
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -176,14 +177,14 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_ERROR_GT(ret, func, label)                        \
     if (OS_isFail(ret)) {                                           \
         OS_ERROR(                                                   \
-        "The function "#func"() call failed with [%d], "            \
+        "The function ["#func"()] call failed with [%d], "          \
         "goto "#label"\n", ret);                                    \
         goto label;                                                 \
     }
 #endif  // OS_isFAIL_ERROR_GT
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印错误信息到标准错误，并二次循环
+ * @brief   判断函数返回状态，失败后打印错误信息到标准错误，并二次循环
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -194,14 +195,15 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_ERROR_CT(ret, func)                               \
     if (OS_isFail(ret)) {                                           \
         OS_ERROR(                                                   \
-        "The function "#func"() call failed with [%d], continue\n", \
+        "The function ["#func"()] call failed with [%d], "          \
+        "continue\n",                                               \
         ret);                                                       \
         continue;                                                   \
     }
 #endif  // OS_isFAIL_ERROR_CT
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印警告信息到标准错误，并返回
+ * @brief   判断函数返回状态，失败后打印警告信息到标准错误，并返回
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -210,14 +212,14 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_WARN_RE(ret, func)                                \
     if (OS_isFail(ret)) {                                           \
         OS_WARN(                                                    \
-        "The function "#func"() call failed with [%d], return\n",   \
+        "The function ["#func"()] call failed with [%d], return\n", \
         ret);                                                       \
         return ret;                                                 \
     }
 #endif  // OS_isFAIL_WARN_RE
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印警告信息到标准错误，不返回
+ * @brief   判断函数返回状态，失败后打印警告信息到标准错误，不做其它处理
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -226,14 +228,14 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_WARN_IF(ret, func)                                \
     if (OS_isFail(ret)) {                                           \
         OS_WARN(                                                    \
-        "The function "#func"() call failed with [%d], "            \
+        "The function ["#func"()] call failed with [%d], "          \
         "print only\n",                                             \
         ret);                                                       \
     }
 #endif  // OS_isFAIL_WARN_IF
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印警告信息到标准错误，并跳转
+ * @brief   判断函数返回状态，失败后打印警告信息到标准错误，并跳转
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -245,14 +247,14 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_WARN_GT(ret, func, label)                         \
     if (OS_isFail(ret)) {                                           \
         OS_WARN(                                                    \
-        "The function "#func"() call failed with [%d], "            \
+        "The function ["#func"()] call failed with [%d], "          \
         "goto "#label"\n", ret);                                    \
         goto label;                                                 \
     }
 #endif  // OS_isFAIL_WARN_GT
 
 /********************************************************************************************
- * @brief   判断函数返回状态，失败后仅打印警告信息到标准错误，并二次循环
+ * @brief   判断函数返回状态，失败后打印警告信息到标准错误，并二次循环
  * 
  * @param   ret: 函数返回值
  * @param   func: 函数名称
@@ -263,10 +265,67 @@ void _os_info_current_time(FILE *stream);
 #define OS_isFAIL_WARN_CT(ret, func)                                \
     if (OS_isFail(ret)) {                                           \
         OS_WARN(                                                    \
-        "The function "#func"() call failed with [%d], continue\n", \
+        "The function ["#func"()] call failed with [%d], "          \
+        "continue\n",                                               \
         ret);                                                       \
         continue;                                                   \
     }
 #endif  // OS_isFAIL_WARN_CT
+
+/********************************************************************************************
+ * @brief   判断指针是否为空，为空打印错误信息到标准错误，并返回为空错误码
+ * 
+ * @param   ptr: 被判断指针
+********************************************************************************************/
+#ifndef OS_ptrIsNull_RE
+#define OS_ptrIsNull_RE(ptr)                                        \
+    if (OS_isNull(ptr)) {                                           \
+        OS_ERROR("The pointer ["#ptr"] is null, return\n");         \
+        return OS_EPTR_NULL;                                        \
+    }
+#endif  // OS_ptrIsNull_RE
+
+/********************************************************************************************
+ * @brief   判断指针是否为空，为空打印错误信息到标准错误，不做其它处理
+ * 
+ * @param   ptr: 被判断指针
+********************************************************************************************/
+#ifndef OS_ptrIsNull_IF
+#define OS_ptrIsNull_IF(ptr)                                        \
+    if (OS_isNull(ptr)) {                                           \
+        OS_ERROR("The pointer ["#ptr"] is null, print only\n");     \
+    }
+#endif  // OS_ptrIsNull_IF
+
+/********************************************************************************************
+ * @brief   判断指针是否为空，为空打印错误信息到标准错误，并二次循环
+ * 
+ * @param   ptr: 被判断指针
+ * 
+ * @note    此宏必须在循环中调用
+********************************************************************************************/
+#ifndef OS_ptrIsNull_CT
+#define OS_ptrIsNull_CT(ptr)                                        \
+    if (OS_isNull(ptr)) {                                           \
+        OS_ERROR("The pointer ["#ptr"] is null, continue\n");       \
+        continue;                                                   \
+    }
+#endif  // OS_ptrIsNull_CT
+
+/********************************************************************************************
+ * @brief   判断指针是否为空，为空打印错误信息到标准错误，并跳转
+ * 
+ * @param   ptr: 被判断指针
+ * @param   label: goto标签
+ * 
+ * @note    此宏调用前必须设置goto处理标签
+********************************************************************************************/
+#ifndef OS_ptrIsNull_GT
+#define OS_ptrIsNull_GT(ptr, label)                                 \
+    if (OS_isNull(ptr)) {                                           \
+        OS_ERROR("The pointer ["#ptr"] is null, goto "#label"\n");  \
+        goto label;                                                 \
+    }
+#endif  // OS_ptrIsNull_GT
 
 #endif  // __OS_INFO_H__
